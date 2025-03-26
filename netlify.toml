@@ -8,7 +8,8 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200 
+# בנטליפיי זה לא נדרש עבור Next.js, ה-plugin יטפל בזה
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200 
