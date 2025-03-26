@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000; /* רקע שחור כמו בתמונה */
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#word-cloud-container {
+    position: relative; /* חובה כדי למקם את התמונה והמילים ביחס אליו */
+    width: 80vw; /* להתאים לגודל הרצוי */
+    max-width: 600px; /* גודל מקסימלי כדי שהתמונה לא תהיה ענקית */
+    aspect-ratio: 1.5; /* יחס רוחב-גובה דומה לתמונה המקורית (בערך 1000/667) */
+    /* border: 1px solid red; /* לבדיקה */
+}
+
+#aloe-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* לשמור על יחס התמונה */
+    opacity: 0; /* התחל שקוף לחלוטין */
+    z-index: 1; /* מאחורי המילים */
+    transition: opacity 3s ease-in-out 1s; /* אנימציה חלקה לשקיפות, עם השהייה קלה */
+    /* מתחיל את ההשהייה בערך כשהמילים מתחילות להתכנס */
+}
+
+.word {
+    position: absolute;
+    color: #90ee90; /* ירוק בהיר */
+    white-space: nowrap;
+    opacity: 0;
+    transition: transform 3s ease-in-out, opacity 1.5s ease-in-out, color 3s ease-in-out; /* טרנזיציה גם לצבע */
+    font-size: 10px; /* נתחיל קטן יותר */
+    cursor: default;
+    z-index: 2; /* לפני התמונה */
+    /* אין transform התחלתי קבוע כאן, הוא יוגדר ב-JS */
+}
+
+/* RTL Support */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix for form inputs in RTL */
+input[dir="rtl"], 
+textarea[dir="rtl"] {
+  text-align: right;
+}
+
+/* Animation container adjustments for responsiveness */
+@media (max-width: 768px) {
+  #word-cloud-container {
+    width: 90vw;
+  }
+}
+
+/* Force text direction for specific elements */
+.rtl {
+  direction: rtl;
+  text-align: right;
+} 
